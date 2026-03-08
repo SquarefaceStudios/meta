@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json",
+  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/blueprint/blueprint_id.json",
   "version": "1.0.0",
   "description": "A set of utilities for representing blueprint IDs",
   "$defs": {

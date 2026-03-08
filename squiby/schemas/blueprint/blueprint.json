@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint.json",
+  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/blueprint/blueprint.json",
   "version": "1.0.0",
   "description": "[Blueprint] A representation of a Blueprint, serialized in JSON format",
   "type": "object",
@@ -18,7 +18,7 @@
     },
     "formatVersion": {
       "description": "[Blueprint] Version of this file format",
-      "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/common/version.json"
+      "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/common/version.json"
     },
     "name": {
       "type": "string",
@@ -26,7 +26,7 @@
     },
     "extends": {
       "description": "[Blueprint] Blueprint Id of the Blueprint to extend in this file.",
-      "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/blueprintId"
+      "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/blueprint/blueprint_id.json#/$defs/blueprintId"
     },
     "output": {
       "description": "[Blueprint] Output item of this blueprint.",
@@ -60,7 +60,7 @@
       "if": {
         "properties": {
           "extends": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/entityBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/blueprint/blueprint_id.json#/$defs/entityBlueprintId"
           },
           "output": {
             "enum": [
@@ -75,7 +75,7 @@
         "properties": {
           "object": {
             "description": "[Blueprint] Properties of the output entity.",
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/entity.json#/$defs/headlessEntity"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/ecm/entity.json#/$defs/headlessEntity"
           }
         }
       }
@@ -84,7 +84,7 @@
       "if": {
         "properties": {
           "extends": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/actorRefBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/blueprint/blueprint_id.json#/$defs/actorRefBlueprintId"
           },
           "output": {
             "enum": [
@@ -97,7 +97,7 @@
         "properties": {
           "object": {
             "description": "[Blueprint] Properties of the output actor ref.",
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json#/$defs/actorRef"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/ecm/component.json#/$defs/actorRef"
           }
         }
       }
@@ -106,7 +106,7 @@
       "if": {
         "properties": {
           "extends": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/inputAdapterBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/blueprint/blueprint_id.json#/$defs/inputAdapterBlueprintId"
           },
           "output": {
             "enum": [
@@ -119,7 +119,7 @@
         "properties": {
           "object": {
             "description": "[Blueprint] Properties of the output entity event adapter.",
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json#/$defs/inputAdapter"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/ecm/component.json#/$defs/inputAdapter"
           }
         }
       }
@@ -128,7 +128,7 @@
       "if": {
         "properties": {
           "extends": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRefBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRefBlueprintId"
           },
           "output": {
             "enum": [
@@ -141,7 +141,7 @@
         "properties": {
           "object": {
             "description": "[Blueprint] Properties of the output mesh ref.",
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json#/$defs/meshRef"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/ecm/component.json#/$defs/meshRef"
           }
         }
       }
@@ -150,7 +150,7 @@
       "if": {
         "properties": {
           "extends": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRendererRefBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRendererRefBlueprintId"
           },
           "output": {
             "enum": [
@@ -163,7 +163,7 @@
         "properties": {
           "object": {
             "description": "[Blueprint] Properties of the output mesh renderer ref.",
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json#/$defs/meshRendererRef"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/ecm/component.json#/$defs/meshRendererRef"
           }
         }
       }
@@ -172,7 +172,7 @@
       "if": {
         "properties": {
           "extends": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/spriteSheetMapperBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/blueprint/blueprint_id.json#/$defs/spriteSheetMapperBlueprintId"
           },
           "output": {
             "enum": [
@@ -185,7 +185,7 @@
         "properties": {
           "object": {
             "description": "[Blueprint] Properties of the output sprite sheet mapper.",
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json#/$defs/spriteSheetMapper"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/ecm/component.json#/$defs/spriteSheetMapper"
           }
         }
       }
@@ -194,7 +194,7 @@
       "if": {
         "properties": {
           "extends": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/textureRefBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/blueprint/blueprint_id.json#/$defs/textureRefBlueprintId"
           },
           "output": {
             "enum": [
@@ -207,7 +207,7 @@
         "properties": {
           "object": {
             "description": "[Blueprint] Properties of the output texture ref.",
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json#/$defs/textureRef"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/ecm/component.json#/$defs/textureRef"
           }
         }
       }
@@ -216,7 +216,7 @@
       "if": {
         "properties": {
           "extends": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/transformBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/blueprint/blueprint_id.json#/$defs/transformBlueprintId"
           },
           "output": {
             "enum": [
@@ -229,7 +229,7 @@
         "properties": {
           "object": {
             "description": "[Blueprint] Properties of the output transform.",
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json#/$defs/transform"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/ecm/component.json#/$defs/transform"
           }
         }
       }

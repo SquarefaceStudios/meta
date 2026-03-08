@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/common/version.json",
+  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/common/version.json",
   "version": "1.0.0",
   "description": "[Version] A representation of a Version, serialized in JSON format",
   "type": [

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/scene/scene.json",
+  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/scene/scene.json",
   "version": "1.0.0",
   "description": "A representation of a Scene, serialized in JSON format",
   "type": "object",
@@ -16,7 +16,7 @@
     },
     "formatVersion": {
       "description": "[Scene] Version of this file format",
-      "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/common/version.json"
+      "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/common/version.json"
     },
     "blueprints": {
       "description": "[Scene] Header item declaring blueprints used in this scene, useful for pre-loading.",
@@ -35,14 +35,14 @@
             "properties": {
               "id": {
                 "description": "[Scene.blueprints.files[k]] The id of the blueprint.",
-                "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/blueprintId"
+                "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/blueprint/blueprint_id.json#/$defs/blueprintId"
               },
               "path": {
                 "description": "[Scene.blueprints.files[k]] The path of the file containing serialized blueprint version.",
                 "type": "string"
               },
               "version": {
-                "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/common/version.json"
+                "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/common/version.json"
               }
             }
           }
@@ -53,7 +53,7 @@
       "type": "array",
       "description": "[Scene] The root entities in this scene.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/entity.json"
+        "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/squiby/schemas/1.0.0/squiby/schemas/ecm/entity.json"
       }
     }
   }
