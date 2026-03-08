@@ -16,7 +16,7 @@
     },
     "formatVersion": {
       "description": "Version of this file format",
-      "$ref": "/version/version.json"
+      "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/version/version.json"
     }
   }
 }
