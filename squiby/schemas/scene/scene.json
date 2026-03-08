@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/scene/scene.json",
+  "title": "Scene",
+  "description": "A representation of a Scene, serialized in JSON format",
+  "type": "object",
+  "required": [
+    "name",
+    "formatVersion"
+  ],
+
+  "properties": {
+    "name": {
+      "description": "The name of the Scene",
+      "type": "string"
+    },
+    "formatVersion": {
+      "description": "Version of this file format",
+      "$ref": "/version/version.json"
+    }
+  }
+}
