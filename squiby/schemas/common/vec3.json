@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/common/vec3.json",
+  "version": "1.0.0",
+  "description": "[Vec3] A 3-dimensional set of values/coordinates.",
+  "type": "array",
+  "maxItems": 3,
+  "items": {
+    "type": "number"
+  }
+}

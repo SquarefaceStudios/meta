@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json",
+  "version": "1.0.0",
+  "description": "A set of utilities for representing blueprint IDs",
+  "$defs": {
+    "blueprintId": {
+      "description": "A blueprint ID.",
+      "type": "string",
+      "pattern": "^bp::((act)|(ead)|(msh)|(rnd)|(spr)|(tex)|(prs)|(cam)|(obj)|(uie))(::std)?::[\\w-]+$"
+    },
+    "componentBlueprintId": {
+      "description": "Blueprint ID of a component blueprint.",
+      "type": "string",
+      "pattern": "^bp::((act)|(ead)|(msh)|(rnd)|(spr)|(tex)|(prs))(::std)?::[\\w-]+$"
+    },
+    "actorRefBlueprintId": {
+      "description": "Blueprint ID of an actor ref blueprint.",
+      "type": "string",
+      "pattern": "^bp::act(::std)?::[\\w-]+$"
+    },
+    "entityEventAdapterBlueprintId": {
+      "description": "Blueprint ID of an entity event adapter blueprint.",
+      "type": "string",
+      "pattern": "^bp::ead(::std)?::[\\w-]+$"
+    },
+    "meshRefBlueprintId": {
+      "description": "Blueprint ID of a mesh ref blueprint.",
+      "type": "string",
+      "pattern": "^bp::msh(::std)?::[\\w-]+$"
+    },
+    "meshRendererRefBlueprintId": {
+      "description": "Blueprint ID of a mesh renderer ref blueprint.",
+      "type": "string",
+      "pattern": "^bp::rnd(::std)?::[\\w-]+$"
+    },
+    "spriteSheetMapperBlueprintId": {
+      "description": "Blueprint ID of a sprite sheet mapper blueprint.",
+      "type": "string",
+      "pattern": "^bp::spr(::std)?::[\\w-]+$"
+    },
+    "textureRefBlueprintId": {
+      "description": "Blueprint ID of a texture ref blueprint.",
+      "type": "string",
+      "pattern": "^bp::tex(::std)?::[\\w-]+$"
+    },
+    "transformBlueprintId": {
+      "description": "Blueprint ID of a transform blueprint.",
+      "type": "string",
+      "pattern": "^bp::prs(::std)?::[\\w-]+$"
+    },
+    "entityBlueprintId": {
+      "description": "Blueprint ID of an entity blueprint.",
+      "type": "string",
+      "pattern": "^bp::((cam)|(obj)|(uie))(::std)?::[\\w-]+$"
+    },
+    "cameraBlueprintId": {
+      "description": "Blueprint ID of a camera blueprint.",
+      "type": "string",
+      "pattern": "^bp::cam(::std)?::[\\w-]+$"
+    },
+    "gameObjectBlueprintId": {
+      "description": "Blueprint ID of a game object blueprint.",
+      "type": "string",
+      "pattern": "^bp::obj(::std)?::[\\w-]+$"
+    },
+    "userInterfaceElementBlueprintId": {
+      "description": "Blueprint ID of a user interface element blueprint.",
+      "type": "string",
+      "pattern": "^bp::uie(::std)?::[\\w-]+$"
+    }
+  }
+}
