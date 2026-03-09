@@ -257,8 +257,8 @@
             "type"
           ],
           "properties": {
-            "type": {
-              "description": "[SpriteSheetMapper.source] Type of source of sprite sheet. self = from current object's TextureRef.",
+            "kind": {
+              "description": "[SpriteSheetMapper.source] Kind of source of sprite sheet. self = from current object's TextureRef.",
               "enum": [
                 "self"
               ]
