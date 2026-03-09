@@ -254,7 +254,7 @@
           "type": "object",
           "description": "[SpriteSheetMapper] Where to obtain the sprite sheet to map.",
           "required": [
-            "type"
+            "kind"
           ],
           "properties": {
             "kind": {
