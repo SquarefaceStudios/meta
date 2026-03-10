@@ -142,7 +142,7 @@
           "type": "array",
           "description": "[Entity] The children of the entity.",
           "items": {
-            "$ref": "#"
+            "$ref": "#/$defs/headlessEntity"
           }
         }
       }
