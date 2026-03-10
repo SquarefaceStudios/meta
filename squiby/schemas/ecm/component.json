@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/ecm/component.json",
+  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json",
   "version": "1.0.0",
   "description": "[Component] A representation of a Component, serialized in JSON format",
   "type": "object",
@@ -21,7 +21,7 @@
 
     "formatVersion": {
       "description": "[Component] Version of this file format",
-      "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/common/version.json"
+      "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/common/version.json"
     }
   },
 
@@ -46,7 +46,7 @@
             "const": "ActorRef"
           },
           "derivedFrom": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/actorRefBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/actorRefBlueprintId"
           }
         }
       },
@@ -63,7 +63,7 @@
             "const": "EventAdapter"
           },
           "derivedFrom": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/eventAdapterBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/eventAdapterBlueprintId"
           }
         }
       },
@@ -80,7 +80,7 @@
             "const": "MeshRef"
           },
           "derivedFrom": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRefBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRefBlueprintId"
           }
         }
       },
@@ -97,7 +97,7 @@
             "const": "MeshRendererRef"
           },
           "derivedFrom": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRendererRefBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRendererRefBlueprintId"
           }
         }
       },
@@ -114,7 +114,7 @@
             "const": "SpriteSheetMapper"
           },
           "derivedFrom": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/spriteSheetMapperBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/spriteSheetMapperBlueprintId"
           }
         }
       },
@@ -131,7 +131,7 @@
             "const": "TextureRef"
           },
           "derivedFrom": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/textureRefBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/textureRefBlueprintId"
           }
         }
       },
@@ -148,7 +148,7 @@
             "const": "Transform"
           },
           "derivedFrom": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/transformBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/transformBlueprintId"
           }
         }
       },
@@ -175,7 +175,7 @@
         },
         "derivedFrom": {
           "description": "[Component] Blueprint id of the actor ref blueprint to apply to this component.",
-          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/actorRefBlueprintId"
+          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/actorRefBlueprintId"
         }
       }
     },
@@ -191,7 +191,7 @@
         },
         "derivedFrom": {
           "description": "[Component] Blueprint id of the entity event adapter blueprint to apply to this component.",
-          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/eventAdapterBlueprintId"
+          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/eventAdapterBlueprintId"
         }
       }
     },
@@ -200,7 +200,7 @@
       "properties": {
         "derivedFrom": {
           "description": "[Component] Blueprint id of the mesh ref blueprint to apply to this component.",
-          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRefBlueprintId"
+          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRefBlueprintId"
         }
       },
       "anyOf": [
@@ -240,7 +240,7 @@
         },
         "derivedFrom": {
           "description": "[Component] Blueprint id of the mesh renderer ref blueprint to apply to this component.",
-          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRendererRefBlueprintId"
+          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRendererRefBlueprintId"
         }
       }
     },
@@ -305,7 +305,7 @@
         },
         "derivedFrom": {
           "description": "[Component] Blueprint id of the sprite sheet mapper blueprint to apply to this component.",
-          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/spriteSheetMapperBlueprintId"
+          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/spriteSheetMapperBlueprintId"
         }
       }
     },
@@ -351,7 +351,7 @@
         },
         "derivedFrom": {
           "description": "[Component] Blueprint id of the texture ref blueprint to apply to this component.",
-          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/textureRefBlueprintId"
+          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/textureRefBlueprintId"
         }
       }
     },
@@ -360,20 +360,20 @@
       "properties": {
         "position": {
           "description": "[Transform] The position in 3D space of the entity.",
-          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/common/vec3.json"
+          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/common/vec3.json"
         },
         "rotation": {
           "description": "[Transform] The rotation in 3D space of the entity.",
-          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/common/vec3.json"
+          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/common/vec3.json"
         },
         "scale": {
           "description": "[Transform] The scale in 3D space of the entity.",
-          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/common/vec3.json"
+          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/common/vec3.json"
         }
       },
       "derivedFrom": {
         "description": "[Component] Blueprint id of the transform blueprint to apply to this component.",
-        "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/transformBlueprintId"
+        "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/transformBlueprintId"
       }
     }
   }

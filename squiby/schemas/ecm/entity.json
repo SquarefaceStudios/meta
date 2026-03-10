@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/ecm/entity.json",
+  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/entity.json",
   "version": "1.0.0",
   "description": "[Entity] A representation of an Entity, serialized in JSON format",
   "type": "object",
@@ -17,7 +17,7 @@
     },
     "formatVersion": {
       "description": "[Component] Version of this file format",
-      "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/common/version.json"
+      "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/common/version.json"
     }
   },
 
@@ -43,13 +43,13 @@
         },
         "derivedFrom": {
           "description": "[Entity] Blueprint id of the blueprint to apply to this entity.",
-          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/entityBlueprintId"
+          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/entityBlueprintId"
         },
         "components": {
           "type": "array",
           "description": "[Entity] The components of the entity.",
           "items": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/ecm/component.json"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json"
           }
         },
         "children": {
