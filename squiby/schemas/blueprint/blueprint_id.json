@@ -7,22 +7,22 @@
     "blueprintId": {
       "description": "A blueprint ID.",
       "type": "string",
-      "pattern": "^bp::((act)|(ead)|(msh)|(rnd)|(spr)|(tex)|(prs)|(cam)|(obj)|(uie))(::std)?::[\\w-]+$"
+      "pattern": "^bp::((act)|(iad)|(msh)|(rnd)|(spr)|(tex)|(prs)|(cam)|(obj)|(uie))(::std)?::[\\w-]+$"
     },
     "componentBlueprintId": {
       "description": "Blueprint ID of a component blueprint.",
       "type": "string",
-      "pattern": "^bp::((act)|(ead)|(msh)|(rnd)|(spr)|(tex)|(prs))(::std)?::[\\w-]+$"
+      "pattern": "^bp::((act)|(iad)|(msh)|(rnd)|(spr)|(tex)|(prs))(::std)?::[\\w-]+$"
     },
     "actorRefBlueprintId": {
       "description": "Blueprint ID of an actor ref blueprint.",
       "type": "string",
       "pattern": "^bp::act(::std)?::[\\w-]+$"
     },
-    "eventAdapterBlueprintId": {
-      "description": "Blueprint ID of an event adapter blueprint.",
+    "inputAdapterBlueprintId": {
+      "description": "Blueprint ID of an input adapter blueprint.",
       "type": "string",
-      "pattern": "^bp::ead(::std)?::[\\w-]+$"
+      "pattern": "^bp::iad(::std)?::[\\w-]+$"
     },
     "meshRefBlueprintId": {
       "description": "Blueprint ID of a mesh ref blueprint.",

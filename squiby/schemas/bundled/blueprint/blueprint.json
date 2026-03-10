@@ -33,7 +33,7 @@
         "Entity::GameObject",
         "Entity::UserInterfaceElement",
         "Component::ActorRef",
-        "Component::EventAdapter",
+        "Component::InputAdapter",
         "Component::MeshRef",
         "Component::MeshRendererRef",
         "Component::SpriteSheetMapper",
@@ -107,11 +107,11 @@
       "if": {
         "properties": {
           "extends": {
-            "$ref": "#/$defs/eventAdapterBlueprintId"
+            "$ref": "#/$defs/inputAdapterBlueprintId"
           },
           "output": {
             "enum": [
-              "Component::EventAdapter"
+              "Component::InputAdapter"
             ]
           }
         }
@@ -120,7 +120,7 @@
         "properties": {
           "object": {
             "description": "[Blueprint] Properties of the output entity event adapter.",
-            "$ref": "#/$defs/eventAdapter"
+            "$ref": "#/$defs/inputAdapter"
           }
         }
       }
@@ -270,7 +270,7 @@
     "blueprintId": {
       "description": "A blueprint ID.",
       "type": "string",
-      "pattern": "^bp::((act)|(ead)|(msh)|(rnd)|(spr)|(tex)|(prs)|(cam)|(obj)|(uie))(::std)?::[\\w-]+$"
+      "pattern": "^bp::((act)|(iad)|(msh)|(rnd)|(spr)|(tex)|(prs)|(cam)|(obj)|(uie))(::std)?::[\\w-]+$"
     },
     "entityBlueprintId": {
       "description": "Blueprint ID of an entity blueprint.",
@@ -328,23 +328,23 @@
         }
       }
     },
-    "eventAdapterBlueprintId": {
-      "description": "Blueprint ID of an event adapter blueprint.",
+    "inputAdapterBlueprintId": {
+      "description": "Blueprint ID of an input adapter blueprint.",
       "type": "string",
-      "pattern": "^bp::ead(::std)?::[\\w-]+$"
+      "pattern": "^bp::iad(::std)?::[\\w-]+$"
     },
-    "eventAdapter": {
+    "inputAdapter": {
       "required": [
-        "keyEventAdapter"
+        "keyInputAdapter"
       ],
       "properties": {
-        "keyEventAdapter": {
+        "keyInputAdapter": {
           "type": "object",
-          "description": "[EventAdapter] Placeholder value. Incomplete, but must be defined for now."
+          "description": "[InputAdapter] Placeholder value. Incomplete, but must be defined for now."
         },
         "derivedFrom": {
           "description": "[Component] Blueprint id of the entity event adapter blueprint to apply to this component.",
-          "$ref": "#/$defs/eventAdapterBlueprintId"
+          "$ref": "#/$defs/inputAdapterBlueprintId"
         }
       }
     },
@@ -557,7 +557,7 @@
           "description": "[Component] Kind of component this is supposed to be.",
           "enum": [
             "ActorRef",
-            "EventAdapter",
+            "InputAdapter",
             "MeshRef",
             "MeshRendererRef",
             "SpriteSheetMapper",
@@ -607,15 +607,15 @@
           "if": {
             "properties": {
               "type": {
-                "const": "EventAdapter"
+                "const": "InputAdapter"
               },
               "derivedFrom": {
-                "$ref": "#/$defs/eventAdapterBlueprintId"
+                "$ref": "#/$defs/inputAdapterBlueprintId"
               }
             }
           },
           "then": {
-            "$ref": "#/$defs/eventAdapter"
+            "$ref": "#/$defs/inputAdapter"
           }
         },
         {
