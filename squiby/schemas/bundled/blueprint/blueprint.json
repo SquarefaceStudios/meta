@@ -1,0 +1,712 @@
+{
+  "version": "1.0.0",
+  "description": "[Blueprint] A representation of a Blueprint, serialized in JSON format",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "formatVersion",
+    "object"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "[Blueprint] The identifier of the blueprint, without the regular identifiers ('bp' prefix, output type, etc.).",
+      "pattern": "^[\\w-]+$"
+    },
+    "formatVersion": {
+      "description": "[Blueprint] Version of this file format",
+      "$ref": "#/$defs/common__version.json"
+    },
+    "name": {
+      "type": "string",
+      "description": "[Blueprint] The display name of the blueprint."
+    },
+    "extends": {
+      "description": "[Blueprint] Blueprint Id of the Blueprint to extend in this file.",
+      "$ref": "#/$defs/blueprintId"
+    },
+    "output": {
+      "description": "[Blueprint] Output item of this blueprint.",
+      "enum": [
+        "Entity::Camera",
+        "Entity::GameObject",
+        "Entity::UserInterfaceElement",
+        "Component::ActorRef",
+        "Component::InputAdapter",
+        "Component::MeshRef",
+        "Component::MeshRendererRef",
+        "Component::SpriteSheetMapper",
+        "Component::TextureRef",
+        "Component::Transform"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "anyOf": [
+        {
+          "required": [
+            "output"
+          ]
+        },
+        {
+          "required": [
+            "extends"
+          ]
+        }
+      ]
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "#/$defs/entityBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Entity::Camera",
+              "Entity::GameObject",
+              "Entity::UserInterfaceElement"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output entity.",
+            "$ref": "#/$defs/headlessEntity"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "#/$defs/actorRefBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Component::ActorRef"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output actor ref.",
+            "$ref": "#/$defs/actorRef"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "#/$defs/inputAdapterBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Component::InputAdapter"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output entity event adapter.",
+            "$ref": "#/$defs/inputAdapter"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "#/$defs/meshRefBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Component::MeshRef"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output mesh ref.",
+            "$ref": "#/$defs/meshRef"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "#/$defs/meshRendererRefBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Component::MeshRendererRef"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output mesh renderer ref.",
+            "$ref": "#/$defs/meshRendererRef"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "#/$defs/spriteSheetMapperBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Component::SpriteSheetMapper"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output sprite sheet mapper.",
+            "$ref": "#/$defs/spriteSheetMapper"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "#/$defs/textureRefBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Component::TextureRef"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output texture ref.",
+            "$ref": "#/$defs/textureRef"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "#/$defs/transformBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Component::Transform"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output transform.",
+            "$ref": "#/$defs/transform"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "common__version.json": {
+      "description": "[Version] A representation of a Version, serialized in JSON format",
+      "type": [
+        "string",
+        "object"
+      ],
+      "required": [
+        "major",
+        "minor"
+      ],
+      "pattern": "^([0-9]+\\.)?([0-9]+\\.)([0-9]+)(\\.[0-9]+)?$",
+      "properties": {
+        "variant": {
+          "description": "[Version] Variant of the version. Represents branched-off content, and 0 should represent a mainline version, which is also the default value.",
+          "type": "integer"
+        },
+        "major": {
+          "description": "[Version] Major component of the version. Starts at 0, which is a non-released version. Changes from 1 onwards represent a breaking change, no compatibility guaranteed.",
+          "type": "integer"
+        },
+        "minor": {
+          "description": "[Version] Minor component of the version. Starts at 1. When major is not 0, changes to this do not represent a breaking change, and backwards compatibility should be mostly guaranteed, requiring minimal changes (i.e. removing usage of deprecated APIs).",
+          "type": "integer"
+        },
+        "patch": {
+          "description": "[Version] Patch component of the version. Starts at 0. When major is not 0, changes to this are not allowed to introduce any changes to the API, only underlying changes. Defaults to 0.",
+          "type": "integer"
+        }
+      }
+    },
+    "blueprintId": {
+      "description": "A blueprint ID.",
+      "type": "string",
+      "pattern": "^bp::((act)|(iad)|(msh)|(rnd)|(spr)|(tex)|(prs)|(cam)|(obj)|(uie))(::std)?::[\\w-]+$"
+    },
+    "entityBlueprintId": {
+      "description": "Blueprint ID of an entity blueprint.",
+      "type": "string",
+      "pattern": "^bp::((cam)|(obj)|(uie))(::std)?::[\\w-]+$"
+    },
+    "headlessEntity": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "[Entity] The name of the entity."
+        },
+        "derivedFrom": {
+          "description": "[Entity] Blueprint id of the blueprint to apply to this entity.",
+          "$ref": "#/$defs/entityBlueprintId"
+        },
+        "components": {
+          "type": "array",
+          "description": "[Entity] The components of the entity.",
+          "items": {
+            "$ref": "#/$defs/ecm__component.json"
+          }
+        },
+        "children": {
+          "type": "array",
+          "description": "[Entity] The children of the entity.",
+          "items": {
+            "$ref": "#"
+          }
+        }
+      }
+    },
+    "actorRefBlueprintId": {
+      "description": "Blueprint ID of an actor ref blueprint.",
+      "type": "string",
+      "pattern": "^bp::act(::std)?::[\\w-]+$"
+    },
+    "actorRef": {
+      "required": [
+        "lib",
+        "name"
+      ],
+      "properties": {
+        "lib": {
+          "type": "string",
+          "description": "[ActorRef] Relative path from project root of the compiled shared library containing actor code."
+        },
+        "name": {
+          "type": "string",
+          "description": "[ActorRef] Name of actor class, used in querying actor functions from library."
+        },
+        "derivedFrom": {
+          "description": "[Component] Blueprint id of the actor ref blueprint to apply to this component.",
+          "$ref": "#/$defs/actorRefBlueprintId"
+        }
+      }
+    },
+    "inputAdapterBlueprintId": {
+      "description": "Blueprint ID of an input adapter blueprint.",
+      "type": "string",
+      "pattern": "^bp::iad(::std)?::[\\w-]+$"
+    },
+    "inputAdapter": {
+      "required": [
+        "keyInputAdapter"
+      ],
+      "properties": {
+        "keyInputAdapter": {
+          "type": "object",
+          "description": "[InputAdapter] Placeholder value. Incomplete, but must be defined for now."
+        },
+        "derivedFrom": {
+          "description": "[Component] Blueprint id of the entity event adapter blueprint to apply to this component.",
+          "$ref": "#/$defs/inputAdapterBlueprintId"
+        }
+      }
+    },
+    "meshRefBlueprintId": {
+      "description": "Blueprint ID of a mesh ref blueprint.",
+      "type": "string",
+      "pattern": "^bp::msh(::std)?::[\\w-]+$"
+    },
+    "meshRef": {
+      "properties": {
+        "derivedFrom": {
+          "description": "[Component] Blueprint id of the mesh ref blueprint to apply to this component.",
+          "$ref": "#/$defs/meshRefBlueprintId"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "standardMeshType"
+          ],
+          "properties": {
+            "standardMeshType": {
+              "type": "string",
+              "description": "[MeshRef] A standard mesh type identifier."
+            }
+          }
+        },
+        {
+          "required": [
+            "path"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "[MeshRef] Relative path from project root of the file containing the mesh data."
+            }
+          }
+        }
+      ]
+    },
+    "meshRendererRefBlueprintId": {
+      "description": "Blueprint ID of a mesh renderer ref blueprint.",
+      "type": "string",
+      "pattern": "^bp::rnd(::std)?::[\\w-]+$"
+    },
+    "meshRendererRef": {
+      "required": [
+        "shader"
+      ],
+      "properties": {
+        "shader": {
+          "type": "string",
+          "description": "[MeshRendererRef] The identifier of the shader program used to render the mesh of the entity this is attached to."
+        },
+        "derivedFrom": {
+          "description": "[Component] Blueprint id of the mesh renderer ref blueprint to apply to this component.",
+          "$ref": "#/$defs/meshRendererRefBlueprintId"
+        }
+      }
+    },
+    "spriteSheetMapperBlueprintId": {
+      "description": "Blueprint ID of a sprite sheet mapper blueprint.",
+      "type": "string",
+      "pattern": "^bp::spr(::std)?::[\\w-]+$"
+    },
+    "spriteSheetMapper": {
+      "required": [
+        "source"
+      ],
+      "properties": {
+        "source": {
+          "type": "object",
+          "description": "[SpriteSheetMapper] Where to obtain the sprite sheet to map.",
+          "required": [
+            "kind"
+          ],
+          "properties": {
+            "kind": {
+              "description": "[SpriteSheetMapper.source] Kind of source of sprite sheet. self = from current object's TextureRef.",
+              "enum": [
+                "self"
+              ]
+            }
+          }
+        },
+        "sprites": {
+          "type": "array",
+          "description": "[SpriteSheetMapper] Regions to extract from the sprite sheet.",
+          "items": {
+            "type": "object",
+            "description": "[SpriteSheetMapper.sprites] A rectangular region to extract a sprite from the sprite sheet.",
+            "properties": {
+              "position": {
+                "type": "object",
+                "description": "[SpriteSheetMapper.sprites[k]] The top-left corner of the rectangular region of the sprite.",
+                "properties": {
+                  "x": {
+                    "type": "integer",
+                    "description": "[SpriteSheetMapper.sprites[k].position] The x coordinate of the top-left rectangular region."
+                  },
+                  "y": {
+                    "type": "integer",
+                    "description": "[SpriteSheetMapper.sprites[k].position] The y coordinate of the top-left rectangular region."
+                  }
+                }
+              },
+              "size": {
+                "type": "object",
+                "description": "[SpriteSheetMapper.sprites[k]] The size of the rectangular region of the sprite.",
+                "properties": {
+                  "width": {
+                    "type": "integer",
+                    "description": "[SpriteSheetMapper.sprites[k].size] The width of the rectangular region."
+                  },
+                  "height": {
+                    "type": "integer",
+                    "description": "[SpriteSheetMapper.sprites[k].size] The height of the rectangular region."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "derivedFrom": {
+          "description": "[Component] Blueprint id of the sprite sheet mapper blueprint to apply to this component.",
+          "$ref": "#/$defs/spriteSheetMapperBlueprintId"
+        }
+      }
+    },
+    "textureRefBlueprintId": {
+      "description": "Blueprint ID of a texture ref blueprint.",
+      "type": "string",
+      "pattern": "^bp::tex(::std)?::[\\w-]+$"
+    },
+    "textureRef": {
+      "required": [
+        "image"
+      ],
+      "properties": {
+        "image": {
+          "type": "object",
+          "description": "[TextureRef] The image identification data of the texture.",
+          "anyOf": [
+            {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "[TextureRef.image] The standard identifier of an image."
+                }
+              }
+            },
+            {
+              "required": [
+                "path"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "[TextureRef.image] The path, relative to the project root, of the image file to use."
+                }
+              }
+            }
+          ],
+          "properties": {
+            "metaPath": {
+              "type": "string",
+              "description": "[TextureRef.image] The path, relative to the project root, of the image meta-information file."
+            }
+          }
+        },
+        "derivedFrom": {
+          "description": "[Component] Blueprint id of the texture ref blueprint to apply to this component.",
+          "$ref": "#/$defs/textureRefBlueprintId"
+        }
+      }
+    },
+    "transformBlueprintId": {
+      "description": "Blueprint ID of a transform blueprint.",
+      "type": "string",
+      "pattern": "^bp::prs(::std)?::[\\w-]+$"
+    },
+    "transform": {
+      "properties": {
+        "position": {
+          "description": "[Transform] The position in 3D space of the entity.",
+          "$ref": "#/$defs/common__vec3.json"
+        },
+        "rotation": {
+          "description": "[Transform] The rotation in 3D space of the entity.",
+          "$ref": "#/$defs/common__vec3.json"
+        },
+        "scale": {
+          "description": "[Transform] The scale in 3D space of the entity.",
+          "$ref": "#/$defs/common__vec3.json"
+        }
+      },
+      "derivedFrom": {
+        "description": "[Component] Blueprint id of the transform blueprint to apply to this component.",
+        "$ref": "#/$defs/transformBlueprintId"
+      }
+    },
+    "ecm__component.json": {
+      "description": "[Component] A representation of a Component, serialized in JSON format",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "[Component] Kind of component this is supposed to be.",
+          "enum": [
+            "ActorRef",
+            "InputAdapter",
+            "MeshRef",
+            "MeshRendererRef",
+            "SpriteSheetMapper",
+            "TextureRef",
+            "Transform"
+          ]
+        },
+        "formatVersion": {
+          "description": "[Component] Version of this file format",
+          "$ref": "#/$defs/common__version.json"
+        }
+      },
+      "allOf": [
+        {
+          "comment": "Must provide 'type' or 'derivedFrom' when standalone.",
+          "anyOf": [
+            {
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "required": [
+                "derivedFrom"
+              ]
+            }
+          ]
+        },
+        {
+          "$comment": "If is an actor ref",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ActorRef"
+              },
+              "derivedFrom": {
+                "$ref": "#/$defs/actorRefBlueprintId"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/actorRef"
+          }
+        },
+        {
+          "$comment": "If is an entity event adapter",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "InputAdapter"
+              },
+              "derivedFrom": {
+                "$ref": "#/$defs/inputAdapterBlueprintId"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/inputAdapter"
+          }
+        },
+        {
+          "$comment": "If is a mesh ref",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "MeshRef"
+              },
+              "derivedFrom": {
+                "$ref": "#/$defs/meshRefBlueprintId"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/meshRef"
+          }
+        },
+        {
+          "$comment": "If is a mesh renderer ref",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "MeshRendererRef"
+              },
+              "derivedFrom": {
+                "$ref": "#/$defs/meshRendererRefBlueprintId"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/meshRendererRef"
+          }
+        },
+        {
+          "$comment": "If is a sprite sheet mapper",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "SpriteSheetMapper"
+              },
+              "derivedFrom": {
+                "$ref": "#/$defs/spriteSheetMapperBlueprintId"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/spriteSheetMapper"
+          }
+        },
+        {
+          "$comment": "If is a texture ref",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "TextureRef"
+              },
+              "derivedFrom": {
+                "$ref": "#/$defs/textureRefBlueprintId"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/textureRef"
+          }
+        },
+        {
+          "$comment": "If is a transform",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "Transform"
+              },
+              "derivedFrom": {
+                "$ref": "#/$defs/transformBlueprintId"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/transform"
+          }
+        }
+      ]
+    },
+    "common__vec3.json": {
+      "description": "[Vec3] A 3-dimensional set of values/coordinates.",
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "number"
+      }
+    }
+  }
+}

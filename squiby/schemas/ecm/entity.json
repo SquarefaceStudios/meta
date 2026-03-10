@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/entity.json",
+  "version": "1.0.0",
+  "description": "[Entity] A representation of an Entity, serialized in JSON format",
+  "type": "object",
+
+  "$ref": "#/$defs/headlessEntity",
+  "properties": {
+    "type": {
+      "description": "Kind of entity this is supposed to be.",
+      "enum": [
+        "Camera",
+        "GameObject",
+        "UserInterfaceElement"
+      ]
+    },
+    "formatVersion": {
+      "description": "[Entity] Version of this file format",
+      "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/common/version.json"
+    }
+  },
+
+  "anyOf": [
+    {
+      "required": [
+        "type"
+      ]
+    },
+    {
+      "required": [
+        "derivedFrom"
+      ]
+    }
+  ],
+
+  "$defs": {
+    "headlessEntity": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "[Entity] The name of the entity."
+        },
+        "derivedFrom": {
+          "description": "[Entity] Blueprint id of the blueprint to apply to this entity.",
+          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/entityBlueprintId"
+        },
+        "components": {
+          "type": "array",
+          "description": "[Entity] The components of the entity.",
+          "items": {
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json"
+          }
+        },
+        "children": {
+          "type": "array",
+          "description": "[Entity] The children of the entity.",
+          "items": {
+            "$ref": "#"
+          }
+        }
+      }
+    }
+  }
+}

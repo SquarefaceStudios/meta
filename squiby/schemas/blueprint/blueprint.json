@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint.json",
+  "version": "1.0.0",
+  "description": "[Blueprint] A representation of a Blueprint, serialized in JSON format",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "formatVersion",
+    "object"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "[Blueprint] The identifier of the blueprint, without the regular identifiers ('bp' prefix, output type, etc.).",
+      "pattern": "^[\\w-]+$"
+    },
+    "formatVersion": {
+      "description": "[Blueprint] Version of this file format",
+      "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/common/version.json"
+    },
+    "name": {
+      "type": "string",
+      "description": "[Blueprint] The display name of the blueprint."
+    },
+    "extends": {
+      "description": "[Blueprint] Blueprint Id of the Blueprint to extend in this file.",
+      "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/blueprintId"
+    },
+    "output": {
+      "description": "[Blueprint] Output item of this blueprint.",
+      "enum": [
+        "Entity::Camera",
+        "Entity::GameObject",
+        "Entity::UserInterfaceElement",
+        "Component::ActorRef",
+        "Component::InputAdapter",
+        "Component::MeshRef",
+        "Component::MeshRendererRef",
+        "Component::SpriteSheetMapper",
+        "Component::TextureRef",
+        "Component::Transform"
+      ]
+    }
+  },
+
+  "allOf": [
+    {
+      "anyOf": [
+        {
+          "required": ["output"]
+        },
+        {
+          "required": ["extends"]
+        }
+      ]
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/entityBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Entity::Camera",
+              "Entity::GameObject",
+              "Entity::UserInterfaceElement"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output entity.",
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/entity.json#/$defs/headlessEntity"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/actorRefBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Component::ActorRef"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output actor ref.",
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json#/$defs/actorRef"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/inputAdapterBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Component::InputAdapter"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output entity event adapter.",
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json#/$defs/inputAdapter"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRefBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Component::MeshRef"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output mesh ref.",
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json#/$defs/meshRef"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRendererRefBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Component::MeshRendererRef"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output mesh renderer ref.",
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json#/$defs/meshRendererRef"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/spriteSheetMapperBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Component::SpriteSheetMapper"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output sprite sheet mapper.",
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json#/$defs/spriteSheetMapper"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/textureRefBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Component::TextureRef"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output texture ref.",
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json#/$defs/textureRef"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "extends": {
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/transformBlueprintId"
+          },
+          "output": {
+            "enum": [
+              "Component::Transform"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "object": {
+            "description": "[Blueprint] Properties of the output transform.",
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/component.json#/$defs/transform"
+          }
+        }
+      }
+    }
+  ]
+}

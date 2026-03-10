@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/scene/scene.json",
+  "version": "1.0.0",
+  "description": "A representation of a Scene, serialized in JSON format",
+  "type": "object",
+  "required": [
+    "name",
+    "formatVersion"
+  ],
+
+  "properties": {
+    "name": {
+      "description": "[Scene] The name of the Scene",
+      "type": "string"
+    },
+    "formatVersion": {
+      "description": "[Scene] Version of this file format",
+      "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/common/version.json"
+    },
+    "blueprints": {
+      "description": "[Scene] Header item declaring blueprints used in this scene, useful for pre-loading.",
+      "type": "object",
+      "properties": {
+        "files": {
+          "description": "[Scene.blueprints] An array of blueprint file descriptors, associating their referenced id with the file path of the resource.",
+          "type": "array",
+          "items": {
+            "description": "[Scene.blueprints.files] A single blueprint id-to-filepath descriptor.",
+            "type": "object",
+            "required": [
+              "id",
+              "path"
+            ],
+            "properties": {
+              "id": {
+                "description": "[Scene.blueprints.files[k]] The id of the blueprint.",
+                "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/blueprintId"
+              },
+              "path": {
+                "description": "[Scene.blueprints.files[k]] The path of the file containing serialized blueprint version.",
+                "type": "string"
+              },
+              "version": {
+                "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/common/version.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "type": "array",
+      "description": "[Scene] The root entities in this scene.",
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/ecm/entity.json"
+      }
+    }
+  }
+}
