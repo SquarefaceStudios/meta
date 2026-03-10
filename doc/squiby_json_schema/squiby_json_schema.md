@@ -2,6 +2,18 @@
 
 Contains a set of JSON schemas used across the squiby engine project.
 
+## Usage
+
+To use JSON schemas, either import it in the '$schema' root tag, or add them to the IDE:
+
+Bottom right corner, with a .json file open
+
+![add](schema_in_clion.png)
+
+And add the URL of the schema (view file as raw to get URL).
+
+![add_map](schema_mapping_in_clion.png)
+
 ## Update guidelines
 
 ### Normal Changes
