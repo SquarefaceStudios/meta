@@ -16,7 +16,7 @@
       ]
     },
     "formatVersion": {
-      "description": "[Component] Version of this file format",
+      "description": "[Entity] Version of this file format",
       "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/common/version.json"
     }
   },

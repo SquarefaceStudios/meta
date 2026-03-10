@@ -21,9 +21,9 @@ And add the URL of the schema (view file as raw to get URL).
 To update the JSON schemas, the following steps are required:
 1. Prepare a working branch.
 2. Make your changes in the schema files (files in "squiby/schemas", excluding the ones from "bundled", as these are the merged generated ones).
-3. Run the bundler script from [here](https://github.com/SquarefaceStudios/squiby-tooling/blob/a6e9e181b75ced363dad6b0d4a978b531dd2a429/scripts/json_schema_bundler.py).
+3. Run the bundler script from [here](https://github.com/SquarefaceStudios/squiby-tooling/blob/main/scripts/json_schema_bundler.py).
 4. Commit the changes to your working branch, including the generated bundled files.
-5. Optionally, test your bundled schemas, either by manual import into validator (IDE), or by fetching it from raw contents from github.
+5. Optionally, test your bundled schemas, either by manual import into validator (IDE), or by fetching it from raw contents from GitHub.
 6. Make a PR on the meta repository.
 
 [//]: # (Remember to update the link from step 3. after merge into main.)

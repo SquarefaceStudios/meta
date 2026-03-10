@@ -104,7 +104,7 @@
           ]
         },
         "formatVersion": {
-          "description": "[Component] Version of this file format",
+          "description": "[Entity] Version of this file format",
           "$ref": "#/$defs/common__version.json"
         }
       },
