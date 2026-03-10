@@ -10,7 +10,7 @@
       "description": "[Component] Kind of component this is supposed to be.",
       "enum": [
         "ActorRef",
-        "EntityEventAdapter",
+        "EventAdapter",
         "MeshRef",
         "MeshRendererRef",
         "SpriteSheetMapper",
@@ -60,15 +60,15 @@
       "if": {
         "properties": {
           "type": {
-            "const": "EntityEventAdapter"
+            "const": "EventAdapter"
           },
           "derivedFrom": {
-            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/entityEventAdapterBlueprintId"
+            "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/eventAdapterBlueprintId"
           }
         }
       },
       "then": {
-        "$ref": "#/$defs/entityEventAdapter"
+        "$ref": "#/$defs/eventAdapter"
       }
     },
 
@@ -180,18 +180,18 @@
       }
     },
 
-    "entityEventAdapter": {
+    "eventAdapter": {
       "required": [
         "keyEventAdapter"
       ],
       "properties": {
         "keyEventAdapter": {
           "type": "object",
-          "description": "[EntityEventAdapter] Placeholder value. Incomplete, but must be defined for now."
+          "description": "[EventAdapter] Placeholder value. Incomplete, but must be defined for now."
         },
         "derivedFrom": {
           "description": "[Component] Blueprint id of the entity event adapter blueprint to apply to this component.",
-          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/entityEventAdapterBlueprintId"
+          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/vl/squiby-schemas/squiby/schemas/blueprint/blueprint_id.json#/$defs/eventAdapterBlueprintId"
         }
       }
     },

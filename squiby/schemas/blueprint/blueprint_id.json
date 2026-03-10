@@ -19,8 +19,8 @@
       "type": "string",
       "pattern": "^bp::act(::std)?::[\\w-]+$"
     },
-    "entityEventAdapterBlueprintId": {
-      "description": "Blueprint ID of an entity event adapter blueprint.",
+    "eventAdapterBlueprintId": {
+      "description": "Blueprint ID of an event adapter blueprint.",
       "type": "string",
       "pattern": "^bp::ead(::std)?::[\\w-]+$"
     },

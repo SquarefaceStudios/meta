@@ -33,7 +33,7 @@
         "Entity::GameObject",
         "Entity::UserInterfaceElement",
         "Component::ActorRef",
-        "Component::EntityEventAdapter",
+        "Component::EventAdapter",
         "Component::MeshRef",
         "Component::MeshRendererRef",
         "Component::SpriteSheetMapper",
@@ -107,11 +107,11 @@
       "if": {
         "properties": {
           "extends": {
-            "$ref": "#/$defs/entityEventAdapterBlueprintId"
+            "$ref": "#/$defs/eventAdapterBlueprintId"
           },
           "output": {
             "enum": [
-              "Component::EntityEventAdapter"
+              "Component::EventAdapter"
             ]
           }
         }
@@ -120,7 +120,7 @@
         "properties": {
           "object": {
             "description": "[Blueprint] Properties of the output entity event adapter.",
-            "$ref": "#/$defs/entityEventAdapter"
+            "$ref": "#/$defs/eventAdapter"
           }
         }
       }
@@ -328,23 +328,23 @@
         }
       }
     },
-    "entityEventAdapterBlueprintId": {
-      "description": "Blueprint ID of an entity event adapter blueprint.",
+    "eventAdapterBlueprintId": {
+      "description": "Blueprint ID of an event adapter blueprint.",
       "type": "string",
       "pattern": "^bp::ead(::std)?::[\\w-]+$"
     },
-    "entityEventAdapter": {
+    "eventAdapter": {
       "required": [
         "keyEventAdapter"
       ],
       "properties": {
         "keyEventAdapter": {
           "type": "object",
-          "description": "[EntityEventAdapter] Placeholder value. Incomplete, but must be defined for now."
+          "description": "[EventAdapter] Placeholder value. Incomplete, but must be defined for now."
         },
         "derivedFrom": {
           "description": "[Component] Blueprint id of the entity event adapter blueprint to apply to this component.",
-          "$ref": "#/$defs/entityEventAdapterBlueprintId"
+          "$ref": "#/$defs/eventAdapterBlueprintId"
         }
       }
     },
@@ -557,7 +557,7 @@
           "description": "[Component] Kind of component this is supposed to be.",
           "enum": [
             "ActorRef",
-            "EntityEventAdapter",
+            "EventAdapter",
             "MeshRef",
             "MeshRendererRef",
             "SpriteSheetMapper",
@@ -607,15 +607,15 @@
           "if": {
             "properties": {
               "type": {
-                "const": "EntityEventAdapter"
+                "const": "EventAdapter"
               },
               "derivedFrom": {
-                "$ref": "#/$defs/entityEventAdapterBlueprintId"
+                "$ref": "#/$defs/eventAdapterBlueprintId"
               }
             }
           },
           "then": {
-            "$ref": "#/$defs/entityEventAdapter"
+            "$ref": "#/$defs/eventAdapter"
           }
         },
         {
