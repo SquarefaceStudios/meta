@@ -267,15 +267,255 @@
         }
       }
     },
+    "blueprint__blueprint_id.json": {
+      "description": "A set of utilities for representing blueprint IDs"
+    },
+    "ecm__entity.json": {
+      "description": "[Entity] A representation of an Entity, serialized in JSON format",
+      "type": "object",
+      "$ref": "#/$defs/headlessEntity",
+      "properties": {
+        "type": {
+          "description": "Kind of entity this is supposed to be.",
+          "enum": [
+            "Camera",
+            "GameObject",
+            "UserInterfaceElement"
+          ]
+        },
+        "formatVersion": {
+          "description": "[Entity] Version of this file format",
+          "$ref": "#/$defs/common__version.json"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "type"
+          ]
+        },
+        {
+          "required": [
+            "derivedFrom"
+          ]
+        }
+      ]
+    },
+    "ecm__component.json": {
+      "description": "[Component] A representation of a Component, serialized in JSON format",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "[Component] Kind of component this is supposed to be.",
+          "enum": [
+            "ActorRef",
+            "InputAdapter",
+            "MeshRef",
+            "MeshRendererRef",
+            "SpriteSheetMapper",
+            "TextureRef",
+            "Transform"
+          ]
+        },
+        "formatVersion": {
+          "description": "[Component] Version of this file format",
+          "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/common/version.json"
+        }
+      },
+      "allOf": [
+        {
+          "comment": "Must provide 'type' or 'derivedFrom' when standalone.",
+          "anyOf": [
+            {
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "required": [
+                "derivedFrom"
+              ]
+            }
+          ]
+        },
+        {
+          "$comment": "If is an actor ref",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ActorRef"
+              },
+              "derivedFrom": {
+                "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/actorRefBlueprintId"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/actorRef"
+          }
+        },
+        {
+          "$comment": "If is an entity event adapter",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "InputAdapter"
+              },
+              "derivedFrom": {
+                "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/inputAdapterBlueprintId"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/inputAdapter"
+          }
+        },
+        {
+          "$comment": "If is a mesh ref",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "MeshRef"
+              },
+              "derivedFrom": {
+                "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRefBlueprintId"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/meshRef"
+          }
+        },
+        {
+          "$comment": "If is a mesh renderer ref",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "MeshRendererRef"
+              },
+              "derivedFrom": {
+                "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/meshRendererRefBlueprintId"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/meshRendererRef"
+          }
+        },
+        {
+          "$comment": "If is a sprite sheet mapper",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "SpriteSheetMapper"
+              },
+              "derivedFrom": {
+                "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/spriteSheetMapperBlueprintId"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/spriteSheetMapper"
+          }
+        },
+        {
+          "$comment": "If is a texture ref",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "TextureRef"
+              },
+              "derivedFrom": {
+                "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/textureRefBlueprintId"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/textureRef"
+          }
+        },
+        {
+          "$comment": "If is a transform",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "Transform"
+              },
+              "derivedFrom": {
+                "$ref": "https://raw.githubusercontent.com/SquarefaceStudios/meta/refs/heads/main/squiby/schemas/blueprint/blueprint_id.json#/$defs/transformBlueprintId"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/transform"
+          }
+        }
+      ]
+    },
     "blueprintId": {
       "description": "A blueprint ID.",
       "type": "string",
       "pattern": "^bp::((act)|(iad)|(msh)|(rnd)|(spr)|(tex)|(prs)|(cam)|(obj)|(uie))(::std)?::[\\w-]+$"
     },
+    "componentBlueprintId": {
+      "description": "Blueprint ID of a component blueprint.",
+      "type": "string",
+      "pattern": "^bp::((act)|(iad)|(msh)|(rnd)|(spr)|(tex)|(prs))(::std)?::[\\w-]+$"
+    },
+    "actorRefBlueprintId": {
+      "description": "Blueprint ID of an actor ref blueprint.",
+      "type": "string",
+      "pattern": "^bp::act(::std)?::[\\w-]+$"
+    },
+    "inputAdapterBlueprintId": {
+      "description": "Blueprint ID of an input adapter blueprint.",
+      "type": "string",
+      "pattern": "^bp::iad(::std)?::[\\w-]+$"
+    },
+    "meshRefBlueprintId": {
+      "description": "Blueprint ID of a mesh ref blueprint.",
+      "type": "string",
+      "pattern": "^bp::msh(::std)?::[\\w-]+$"
+    },
+    "meshRendererRefBlueprintId": {
+      "description": "Blueprint ID of a mesh renderer ref blueprint.",
+      "type": "string",
+      "pattern": "^bp::rnd(::std)?::[\\w-]+$"
+    },
+    "spriteSheetMapperBlueprintId": {
+      "description": "Blueprint ID of a sprite sheet mapper blueprint.",
+      "type": "string",
+      "pattern": "^bp::spr(::std)?::[\\w-]+$"
+    },
+    "textureRefBlueprintId": {
+      "description": "Blueprint ID of a texture ref blueprint.",
+      "type": "string",
+      "pattern": "^bp::tex(::std)?::[\\w-]+$"
+    },
+    "transformBlueprintId": {
+      "description": "Blueprint ID of a transform blueprint.",
+      "type": "string",
+      "pattern": "^bp::prs(::std)?::[\\w-]+$"
+    },
     "entityBlueprintId": {
       "description": "Blueprint ID of an entity blueprint.",
       "type": "string",
       "pattern": "^bp::((cam)|(obj)|(uie))(::std)?::[\\w-]+$"
+    },
+    "cameraBlueprintId": {
+      "description": "Blueprint ID of a camera blueprint.",
+      "type": "string",
+      "pattern": "^bp::cam(::std)?::[\\w-]+$"
+    },
+    "gameObjectBlueprintId": {
+      "description": "Blueprint ID of a game object blueprint.",
+      "type": "string",
+      "pattern": "^bp::obj(::std)?::[\\w-]+$"
+    },
+    "userInterfaceElementBlueprintId": {
+      "description": "Blueprint ID of a user interface element blueprint.",
+      "type": "string",
+      "pattern": "^bp::uie(::std)?::[\\w-]+$"
     },
     "headlessEntity": {
       "properties": {
@@ -303,11 +543,6 @@
         }
       }
     },
-    "actorRefBlueprintId": {
-      "description": "Blueprint ID of an actor ref blueprint.",
-      "type": "string",
-      "pattern": "^bp::act(::std)?::[\\w-]+$"
-    },
     "actorRef": {
       "required": [
         "lib",
@@ -328,11 +563,6 @@
         }
       }
     },
-    "inputAdapterBlueprintId": {
-      "description": "Blueprint ID of an input adapter blueprint.",
-      "type": "string",
-      "pattern": "^bp::iad(::std)?::[\\w-]+$"
-    },
     "inputAdapter": {
       "required": [
         "keyInputAdapter"
@@ -347,11 +577,6 @@
           "$ref": "#/$defs/inputAdapterBlueprintId"
         }
       }
-    },
-    "meshRefBlueprintId": {
-      "description": "Blueprint ID of a mesh ref blueprint.",
-      "type": "string",
-      "pattern": "^bp::msh(::std)?::[\\w-]+$"
     },
     "meshRef": {
       "properties": {
@@ -385,11 +610,6 @@
         }
       ]
     },
-    "meshRendererRefBlueprintId": {
-      "description": "Blueprint ID of a mesh renderer ref blueprint.",
-      "type": "string",
-      "pattern": "^bp::rnd(::std)?::[\\w-]+$"
-    },
     "meshRendererRef": {
       "required": [
         "shader"
@@ -404,11 +624,6 @@
           "$ref": "#/$defs/meshRendererRefBlueprintId"
         }
       }
-    },
-    "spriteSheetMapperBlueprintId": {
-      "description": "Blueprint ID of a sprite sheet mapper blueprint.",
-      "type": "string",
-      "pattern": "^bp::spr(::std)?::[\\w-]+$"
     },
     "spriteSheetMapper": {
       "required": [
@@ -474,11 +689,6 @@
         }
       }
     },
-    "textureRefBlueprintId": {
-      "description": "Blueprint ID of a texture ref blueprint.",
-      "type": "string",
-      "pattern": "^bp::tex(::std)?::[\\w-]+$"
-    },
     "textureRef": {
       "required": [
         "image"
@@ -524,11 +734,6 @@
         }
       }
     },
-    "transformBlueprintId": {
-      "description": "Blueprint ID of a transform blueprint.",
-      "type": "string",
-      "pattern": "^bp::prs(::std)?::[\\w-]+$"
-    },
     "transform": {
       "properties": {
         "position": {
@@ -548,157 +753,6 @@
         "description": "[Component] Blueprint id of the transform blueprint to apply to this component.",
         "$ref": "#/$defs/transformBlueprintId"
       }
-    },
-    "ecm__component.json": {
-      "description": "[Component] A representation of a Component, serialized in JSON format",
-      "type": "object",
-      "properties": {
-        "type": {
-          "description": "[Component] Kind of component this is supposed to be.",
-          "enum": [
-            "ActorRef",
-            "InputAdapter",
-            "MeshRef",
-            "MeshRendererRef",
-            "SpriteSheetMapper",
-            "TextureRef",
-            "Transform"
-          ]
-        },
-        "formatVersion": {
-          "description": "[Component] Version of this file format",
-          "$ref": "#/$defs/common__version.json"
-        }
-      },
-      "allOf": [
-        {
-          "comment": "Must provide 'type' or 'derivedFrom' when standalone.",
-          "anyOf": [
-            {
-              "required": [
-                "type"
-              ]
-            },
-            {
-              "required": [
-                "derivedFrom"
-              ]
-            }
-          ]
-        },
-        {
-          "$comment": "If is an actor ref",
-          "if": {
-            "properties": {
-              "type": {
-                "const": "ActorRef"
-              },
-              "derivedFrom": {
-                "$ref": "#/$defs/actorRefBlueprintId"
-              }
-            }
-          },
-          "then": {
-            "$ref": "#/$defs/actorRef"
-          }
-        },
-        {
-          "$comment": "If is an entity event adapter",
-          "if": {
-            "properties": {
-              "type": {
-                "const": "InputAdapter"
-              },
-              "derivedFrom": {
-                "$ref": "#/$defs/inputAdapterBlueprintId"
-              }
-            }
-          },
-          "then": {
-            "$ref": "#/$defs/inputAdapter"
-          }
-        },
-        {
-          "$comment": "If is a mesh ref",
-          "if": {
-            "properties": {
-              "type": {
-                "const": "MeshRef"
-              },
-              "derivedFrom": {
-                "$ref": "#/$defs/meshRefBlueprintId"
-              }
-            }
-          },
-          "then": {
-            "$ref": "#/$defs/meshRef"
-          }
-        },
-        {
-          "$comment": "If is a mesh renderer ref",
-          "if": {
-            "properties": {
-              "type": {
-                "const": "MeshRendererRef"
-              },
-              "derivedFrom": {
-                "$ref": "#/$defs/meshRendererRefBlueprintId"
-              }
-            }
-          },
-          "then": {
-            "$ref": "#/$defs/meshRendererRef"
-          }
-        },
-        {
-          "$comment": "If is a sprite sheet mapper",
-          "if": {
-            "properties": {
-              "type": {
-                "const": "SpriteSheetMapper"
-              },
-              "derivedFrom": {
-                "$ref": "#/$defs/spriteSheetMapperBlueprintId"
-              }
-            }
-          },
-          "then": {
-            "$ref": "#/$defs/spriteSheetMapper"
-          }
-        },
-        {
-          "$comment": "If is a texture ref",
-          "if": {
-            "properties": {
-              "type": {
-                "const": "TextureRef"
-              },
-              "derivedFrom": {
-                "$ref": "#/$defs/textureRefBlueprintId"
-              }
-            }
-          },
-          "then": {
-            "$ref": "#/$defs/textureRef"
-          }
-        },
-        {
-          "$comment": "If is a transform",
-          "if": {
-            "properties": {
-              "type": {
-                "const": "Transform"
-              },
-              "derivedFrom": {
-                "$ref": "#/$defs/transformBlueprintId"
-              }
-            }
-          },
-          "then": {
-            "$ref": "#/$defs/transform"
-          }
-        }
-      ]
     },
     "common__vec3.json": {
       "description": "[Vec3] A 3-dimensional set of values/coordinates.",
